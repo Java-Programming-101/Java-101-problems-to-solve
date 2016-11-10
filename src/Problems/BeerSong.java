@@ -3,6 +3,8 @@
  */
 package Problems;
 
+
+
 /**
  * The beersong
  * In this puzzle, write code to print out the entire "99 bottles of beer on the wall" song.
@@ -13,7 +15,7 @@ package Problems;
  * X bottles of beer
  * Take one down, pass it around
  * X-1 bottles of beer on the wall
- * X-1 bottles of beer on the wal
+ * X-1 bottles of beer on the wall
  * 
  * ...
  * 
@@ -28,5 +30,18 @@ package Problems;
  *
  */
 public class BeerSong {
+	
+	public static void main(String[] args) {
+	
+	for (int x = 99; x>0;x--){
+		System.out.println(x +" bottles of beer on the wall.");
+		System.out.println(x +" bottles of beer.");
+		System.out.println("Take one down, pass it around");
+		if (x == 2) {
+			System.out.println(x-1 + " bottle of beer on the wall.");
+		}
+		System.out.println(x-1 + " bottles of beer on the wall.\n");
+		}
 
+	}
 }
