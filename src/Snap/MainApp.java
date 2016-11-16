@@ -33,28 +33,41 @@ public class MainApp {
 		//keep track of the last player to go
 		int lastPlayerTogo = 0;
 		
+		int timesNooneHasCards = 0;
 		
 		do{
 			if (!gameDeck.isEmpty()) {//make sure the game deck has cards. 
 				
-				switch (lastPlayerTogo) {		//check who wentt last time.
+				switch (lastPlayerTogo) {		//check who went last time.
 				case 1: 						//if player 1 went last time player two should go now. 
 					if(!player2.isEmpty()){ 	// if player 2 has cards then pay a card. 
 						gameDeck.add(0,player2.remove(0));
+						System.out.println("Player 2 dealt "+ gameDeck.get(0).toString());
 					}else{
-						System.out.println("Player 2 has no cards");
+						System.out.println("Player 2 has no cards ********");
 					}
 					lastPlayerTogo=2;
 					break;
 				case 2: 					//if player 2 went last time player 1 should go now. 
 					if(!player1.isEmpty()){ //if player 1 has cards, then play a card. 
 						gameDeck.add(0,player1.remove(0));
+						System.out.println("Player 1 dealt "+ gameDeck.get(0).toString());
+
 					}else{
-						System.out.println("Player 1 has no cards");
+						System.out.println("Player 1 has no cards******");
 					}
 					lastPlayerTogo = 1;
 					break;
 				}
+				
+				if (player1.isEmpty() && player2.isEmpty()) {
+					
+					Cards emptyhands = gameDeck.remove(gameDeck.size()-1);
+					gameDeck.add(0, emptyhands);
+					timesNooneHasCards++;
+					
+				}
+				
 				
 				if (gameDeck.size() > 1) { // if there are two cards on the deck what were the last 2 cards played?
 					System.out.println("The last 2 cars dealt were " + gameDeck.get(0).toString()+
@@ -93,11 +106,22 @@ public class MainApp {
 			}else{ // if the gamedeck has no cards either the game has just started or a player just got snap.
 				switch (lastPlayerTogo) {
 				case 1:
-					gameDeck.add(player2.remove(0));
+					if(!player2.isEmpty()){ 	// if player 2 has cards then pay a card. 
+						gameDeck.add(0,player2.remove(0));
+						System.out.println("Player 2 dealt "+ gameDeck.get(0).toString());
+					}else{
+						System.out.println("Player 2 has no cards ********");
+					}
 					lastPlayerTogo=2;
 					break;
 				case 2: 
-					gameDeck.add(player1.remove(0));
+					if(!player1.isEmpty()){ //if player 1 has cards, then play a card. 
+						gameDeck.add(0,player1.remove(0));
+						System.out.println("Player 1 dealt "+ gameDeck.get(0).toString());
+
+					}else{
+						System.out.println("Player 1 has no cards******");
+					}
 					lastPlayerTogo = 1;
 					break;
 				default:
@@ -108,12 +132,25 @@ public class MainApp {
 			}
 			
 			
-			if(player2.isEmpty() && lastPlayerTogo == 1){
+			if(player2.isEmpty() && player1.size() == 52 && lastPlayerTogo == 1){
 				System.out.println("Player 1 wins!");
 				gameWon=true;
-			}else if(player1.isEmpty() && lastPlayerTogo == 2){
+				
+				System.out.println("Player 1 :" +player1.size() + player1.toString());
+				System.out.println("Player 2 :" +player2.size() + player2.toString());
+
+			}else if(player1.isEmpty() && player2.size() == 52 && lastPlayerTogo == 2){
 				System.out.println("Player 2 wins!");
 				gameWon=true;
+				
+				System.out.println("Player 1 :" +player1.size() + player1.toString());
+
+				System.out.println("Player 2 :" +player2.size() + player2.toString());
+			}else if (timesNooneHasCards == 52*2) {
+				
+				System.out.println("Draw!!!");
+				gameWon=true;
+				
 			}
 			
 			
