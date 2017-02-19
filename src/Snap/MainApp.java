@@ -1,5 +1,4 @@
 package Snap;
-
 import java.util.ArrayList;
 
 public class MainApp {
@@ -10,7 +9,7 @@ public class MainApp {
 		ArrayList<Cards> player2 = new ArrayList<>();
 		// create the deck of cards. 
 		Deck deck2 = new Deck();
-		
+		System.out.println(deck2.toString());
 
 		int numberOfCards = deck2.getTotalCards();
 		
@@ -64,8 +63,7 @@ public class MainApp {
 					
 					Cards emptyhands = gameDeck.remove(gameDeck.size()-1);
 					gameDeck.add(0, emptyhands);
-					timesNooneHasCards++;
-					
+					timesNooneHasCards++;	
 				}
 				
 				
@@ -95,11 +93,7 @@ public class MainApp {
 						
 					}
 					
-					if (player1.isEmpty()&&player2.isEmpty()&& lastPlayerTogo == 1){ //after snap has been called 
-						System.out.println("Player 1 wins");
-					}else if (player2.isEmpty()&&player1.isEmpty()&&lastPlayerTogo == 2) {
-						System.out.println("Player 2 wins");	
-					}
+
 				}
 				
 				
@@ -135,7 +129,7 @@ public class MainApp {
 			if(player2.isEmpty() && player1.size() == 52 && lastPlayerTogo == 1){
 				System.out.println("Player 1 wins!");
 				gameWon=true;
-				
+			
 				System.out.println("Player 1 :" +player1.size() + player1.toString());
 				System.out.println("Player 2 :" +player2.size() + player2.toString());
 
@@ -144,23 +138,14 @@ public class MainApp {
 				gameWon=true;
 				
 				System.out.println("Player 1 :" +player1.size() + player1.toString());
-
 				System.out.println("Player 2 :" +player2.size() + player2.toString());
 			}else if (timesNooneHasCards == 52*2) {
-				
 				System.out.println("Draw!!!");
-				gameWon=true;
-				
+				gameWon=true;	
 			}
 			
-			
 		}while (!gameWon) ;
-		
-		
-		
-		
-		
-		
+
 	}
 	
 
