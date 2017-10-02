@@ -7,6 +7,7 @@ public class MainApp {
 	    // create the players hands
 		ArrayList<Cards> player1 = new ArrayList<>();
 		ArrayList<Cards> player2 = new ArrayList<>();
+		
 		// create the deck of cards. 
 		Deck deck2 = new Deck();
 		System.out.println(deck2.toString());
@@ -25,6 +26,7 @@ public class MainApp {
 
 		//set up the gamedeck for the payers to pay their cards to
 		ArrayList<Cards> gameDeck = new ArrayList<>();
+		
 		//has the game been won?
 		boolean gameWon = false;
 		
